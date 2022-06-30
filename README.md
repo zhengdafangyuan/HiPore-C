@@ -6,23 +6,23 @@ This is the code used to make a pipeline for analysing in situ high throughput m
 # Software
 This pipeline has a number of dependencies including the following:
 
-Guppy (4.5.3);  
-Megalodon (2.3.4);  
-Nanoplot (1.30.1);  
-ngmlr (0.2.7);  
-minimap2 (2.17-r941);  
-samtools (1.10);  
-gffcompare (version 0.11.6);  
-Pore-C-Snakemake pipeline (0.3.0);  
-FIMO (5.3.3);   
-cooltools (0.5.1);  
-cooler (0.8.6);  
-HiCrep (1.2.0);  
-Juicer(1.22.01);  
-Juicebox(v2.10.01);  
-HiCExplorer (3.6);  
-HiGlass  
-FAN-C 
+- Guppy (4.5.3);  
+- Megalodon (2.3.4);  
+- Nanoplot (1.30.1);  
+- ngmlr (0.2.7);  
+- minimap2 (2.17-r941);  
+- samtools (1.10);  
+- gffcompare (version 0.11.6);  
+- Pore-C-Snakemake pipeline (0.3.0);  
+- FIMO (5.3.3);   
+- cooltools (0.5.1);  
+- cooler (0.8.6);  
+- HiCrep (1.2.0);  
+- Juicer(1.22.01);  
+- Juicebox(v2.10.01);  
+- HiCExplorer (3.6);  
+- HiGlass  
+- FAN-C 
 
 
 # Basecalling and Methylation calling
