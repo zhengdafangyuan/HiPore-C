@@ -1,7 +1,7 @@
 # HiPore-C
 We developed a protocol of in situ high throughput multi-way contact long read Pore-C sequencing (in situ HiPore-C), a strategy that integrated multi-fragment ligates preparation with third-generation sequencing technology. Compared to the reported Pore-C method, HiPore-C can yield more chromatin interactions than traditional Hi-C and Pore-C at the same cost using simple procedures.And base on the high-order and allele-specific feature of HiPore-C, we have globally characterized single-allele topologies with unprecedented depth to reveal elusive genome folding principles.
 
-This is the code used to make a pipeline for analysing in situ high throughput multi-way contact long read Pore-C sequencing (HiPore-C) data. In this work, We use the human hg38 genome as reference, and we obtained the public Hi-C, Chip-seq, DNase-seq and RNA-seq datasets of GM12878 and K562 cell lines from 4DN or ENDCODE database. 
+This is the code used to make a pipeline for analysing HiPore-C data. In this work, We use the human hg38 genome as reference, and we obtained the public Hi-C, Chip-seq, DNase-seq and RNA-seq datasets of GM12878 and K562 cell lines from 4DN porter or ENDCODE database. 
 
 # Software
 This pipeline has a number of dependencies including the following:
@@ -27,7 +27,7 @@ This pipeline has a number of dependencies including the following:
 
 # Basecalling and Methylation calling
 
-In steps, Guppy and Megalodon software were used. And due to the large amount of Nanopore data, it is recommended to generate a corresponding fastq or modification callling bam result for each multfast5 file (typically containing 4000 reads) in order to facilitate the subsequent analysis. The input is fast5 file and the output is fastq and mod bam file.
+In this step, Guppy and Megalodon software were used. And due to the large amount of Nanopore data, it is recommended to generate a corresponding fastq or modification callling bam result for each multfast5 file (typically containing 4000 reads) to facilitate the subsequent analysis. The input is fast5 file and the output is fastq and mod bam file.
 
 ``` 
 Conf_file="~/ont-guppy/data/dna_r9.4.1_450bps_hac_prom.cfg"
@@ -55,9 +55,9 @@ megalodon \
 ``` 
 
 # Mapping and Fragment Annotation
-In this step, to obtain more accurate alignment results for high-order reads, and to improve the effective usage of HiPore-C data, we introduced the NGMLR and Minimap2 for three-generation sequencing to construct the HiPore-C alignment pipeline. NGMLR algorithm has advantages for sequence breakpoint identification and Minimap2 algorithm has advantages for long noisy sequence reads alignment. Consistent with the above, we recommend to perform alignment and annotation for each single fastq file (generated from a 4000 reads multifast5 file).
+In this step, to obtain more accurate alignment results for high-order reads, and to improve the effective usage of HiPore-C data, we introduced the NGMLR and Minimap2 to construct the HiPore-C alignment pipeline. NGMLR algorithm has advantages for sequence breakpoint identification and Minimap2 algorithm has advantages for long noisy sequence reads alignment. Similar to the above, we propose to perform alignment and annotation for each single fastq file (generated from a 4000 reads multifast5 file).
 
-Use the ./Scripts/Alignment.sh  and ./Scripts/Fragment_Annotation.sh script to perform this analysis. The fastq data needs to be placed in the ```${Sampledir}/Rawdata``` directory, the generated alignment result files will be placed to ```${Sampledir}/Mapping``` , and the annotation files will be placed to ```${Sampledir}/vdFAnnotation``` directory.  A python script for annotating fragments ```annopy="./Scripts/Read_Fragment_Annotation.py"```, a table of in-silicon genomic restriction enzyme digested fragments ```genome_digest_frag="./Scripts/DpnII_GRCh38.vd.fragments.csv"``` , and a shell script for re-alignment ```ReAlignBash="./Scripts/minimap2_subreads_remapping.sh"``` and alignemtn validation ```ChromCheckBash="./Scripts/multichrom_check.sh"``` are also used in this step of the analysis.
+Use the ./Scripts/Alignment.sh  and ./Scripts/Fragment_Annotation.sh script to perform this analysis. The fastq data needs to be placed in the ```${Sampledir}/Rawdata``` directory, the generated alignment result files will be placed to ```${Sampledir}/Mapping``` , and the annotation files will be placed to ```${Sampledir}/vdFAnnotation``` directory.  A python script for annotating fragments ```annopy="./Scripts/Read_Fragment_Annotation.py"```, a table of genomic restriction enzyme  in-silicon digested fragments ```genome_digest_frag="./Scripts/DpnII_GRCh38.vd.fragments.csv"``` , and a shell script for re-alignment ```ReAlignBash="./Scripts/minimap2_subreads_remapping.sh"``` and alignemtn validation ```ChromCheckBash="./Scripts/multichrom_check.sh"``` are also used in this step of the analysis.
 
 To run the pipeline type:
 
