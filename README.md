@@ -6,9 +6,12 @@ This is the code used to make a pipeline for analysing HiPore-C data. In this wo
 # Software
 This pipeline has a number of dependencies including the following:
 
+- python （3.7）；
 - Guppy (4.5.3);  
 - Megalodon (2.3.4);  
 - Nanoplot (1.30.1);  
+- seqkit (2.2.0)
+- seqtk (1.3-r106)
 - ngmlr (0.2.7);  
 - minimap2 (2.17-r941);  
 - samtools (1.10);  
