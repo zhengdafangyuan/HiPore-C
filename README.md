@@ -1,7 +1,7 @@
 # HiPore-C
 We developed a protocol of in situ high throughput multi-way contact long read Pore-C sequencing (in situ HiPore-C), a strategy that integrated multi-fragment ligates preparation with third-generation sequencing technology. Compared to the reported Pore-C method, HiPore-C can yield more chromatin interactions than traditional Hi-C and Pore-C at the same cost using simple procedures.And base on the high-order and allele-specific feature of HiPore-C, we have globally characterized single-allele topologies with unprecedented depth to reveal elusive genome folding principles.
 
-This is the code used to make a pipeline for analysing HiPore-C data. In this work, We use the human hg38 genome as reference, and we obtained the public Hi-C, Chip-seq, DNase-seq and RNA-seq datasets of GM12878 and K562 cell lines from 4DN porter or ENDCODE database. 
+This is the code used to make a pipeline for analysing HiPore-C data. In this work, We use the human hg38 genome (GRCh38_no_alt_analysis_set_GCA_000001405.15) as reference, and we obtained the public Hi-C, Chip-seq, DNase-seq and RNA-seq datasets of GM12878 and K562 cell lines from 4DN porter or ENDCODE database. 
 
 # Software
 This pipeline has a number of dependencies including the following:
@@ -62,6 +62,13 @@ In this step, to obtain more accurate alignment results for high-order reads, an
 
 Use the ./Scripts/Alignment.sh  and ./Scripts/Fragment_Annotation.sh script to perform this analysis. The fastq data needs to be placed in the ```${Sampledir}/Rawdata``` directory, the generated alignment result files will be placed to ```${Sampledir}/Mapping``` , and the annotation files will be placed to ```${Sampledir}/vdFAnnotation``` directory.  A python script for annotating fragments ```annopy="./Scripts/Read_Fragment_Annotation.py"```, a table of genomic restriction enzyme  in-silicon digested fragments ```genome_digest_frag="./Scripts/DpnII_GRCh38.vd.fragments.csv"``` , and a shell script for re-alignment ```ReAlignBash="./Scripts/minimap2_subreads_remapping.sh"``` and alignemtn validation ```ChromCheckBash="./Scripts/multichrom_check.sh"``` are also used in this step of the analysis.
 
+To generate the DpnII_GRCh38.vd.fragments.csv type:
+```
+cooler digest -o hg38_DpnII_digetstion_fragment.bed hg38.chromosomes.size GCA_000001405.15_GRCh38_major_chr.fa DpnII
+echo "chrom,start,end,fragment_length,fragment_id" > DpnII_GRCh38.vd.fragments.csv  #DpnII_GRCh38.vd.fragments.csv with columns [chrom, start, end, fragment_length, fragment_id]
+awk -v OFS="," '{pirnt $1,$2,$3,$3-$2,NR}' hg38_DpnII_digetstion_fragment.bed >> DpnII_GRCh38.vd.fragments.csv
+``` 
+
 To run the pipeline type:
 
 ``` 
@@ -69,6 +76,7 @@ base ./Scripts/Alignment.sh $Sampledir $refgenome $fastq $threads
 base ./Scripts/Fragment_Annotation.sh $annopy $Sampledir $refgenome $fastq $genome_digest_frag  $ReAlignBash $ChromCheckBash
 
 ``` 
+
 
 
 # Generate pairwise contact matrix
