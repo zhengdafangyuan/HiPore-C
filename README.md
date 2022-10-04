@@ -86,7 +86,7 @@ To generate pairwise contact matrix, merge all ```Align_Fragment_RvdF.csv``` fil
 ``` 
 inputfile="Merge_Align_Fragment_RvdF.csv"
 juice_matrix="juice_matrix.txt"
-python ./Scripts/Generate_Contact_juiceMatrix.py ${inputpaf} ${contact_matrix}
+python ./Scripts/Generate_Contact_juiceMatrix.py -p ${inputpaf} -o ${contact_matrix} -s 0 -t 20 -c 1000000 &
 ``` 
 
 
