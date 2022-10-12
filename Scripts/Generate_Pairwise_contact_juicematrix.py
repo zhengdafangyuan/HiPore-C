@@ -155,10 +155,9 @@ def ContactMatrix(gDF,SeparateTag=0):
 
 def ExportFun(Exportfile, contactlist):
     # export
-    contactlist = [item for item in contactlist if item != "-" ] # remove empty
-    with open(Exportfile, "w+") as fileID:
-        fileID.writelines( "\n".join(contactlist)  ) 
-    #fileID.flush()
+    contactlist = [item+"\n" for item in contactlist if item != "-" ] # remove empty
+    with open(Exportfile, "a") as fileID:
+        fileID.writelines( "".join(contactlist)  ) 
     fileID.close()
     return 1
 
