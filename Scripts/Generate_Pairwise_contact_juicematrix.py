@@ -128,7 +128,7 @@ def Contactrow(binidx, gDF):
                                                            mapq1, mapq2) for idx in range( len(i1) ) ]
         contactlist = "\n".join(contactlist)
     else:
-        contactlist = ""
+        contactlist = "-"
     return(contactlist)
 
 
@@ -155,8 +155,8 @@ def ContactMatrix(gDF,SeparateTag=0):
 
 def ExportFun(Exportfile, contactlist):
     # export
-    contactlist = [item for item in contactlist if item != "" ] # remove empty
-    with open(Exportfile, "a") as fileID:
+    contactlist = [item for item in contactlist if item != "-" ] # remove empty
+    with open(Exportfile, "w+") as fileID:
         fileID.writelines( "\n".join(contactlist)  ) 
     #fileID.flush()
     fileID.close()
