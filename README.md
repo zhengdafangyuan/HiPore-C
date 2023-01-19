@@ -14,18 +14,17 @@ This pipeline has a number of dependencies including the following:
 - seqtk (1.3-r106);
 - ngmlr (0.2.7);  
 - minimap2 (2.17-r941);  
-- samtools (1.10);  
-- gffcompare (version 0.11.6);  
+- samtools (1.10);    
 - Pore-C-Snakemake pipeline (0.3.0);  
 - FIMO (5.3.3);   
 - cooltools (0.5.1);  
 - cooler (0.8.6);  
 - HiCrep (1.2.0);  
 - Juicer(1.22.01);  
-- Juicebox(v2.10.01);  
+- Juicebox(2.10.01);  
 - HiCExplorer (3.6);  
-- HiGlass  
-- FAN-C 
+- HiGlass (1.11.7);  
+- FAN-C (0.9.23);
 
 
 # Basecalling and Methylation calling
