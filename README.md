@@ -3,6 +3,9 @@ We developed a protocol of in situ high throughput multi-way contact long read P
 
 This is the code used to make a pipeline for analysing HiPore-C data. In this work, We use the human hg38 genome (GRCh38_no_alt_analysis_set_GCA_000001405.15) as reference, and we obtained the public Hi-C, Chip-seq, DNase-seq and RNA-seq datasets of GM12878 and K562 cell lines from 4DN porter or ENDCODE database. 
 
+
+Due to a cyber-attack last year, our management decided to shut down www.tgsbioinformatics.com as a precaution, with an uncertain timeline for its return. However, we've ensured the availability of our processed data elsewhere: alignment data is accessible on GEO (accession number GSE202539), and we've uploaded contact matrix and methylation data to Zenodo (https://zenodo.org/records/10822184).
+
 # Software
 This pipeline has a number of dependencies including the following:
 
